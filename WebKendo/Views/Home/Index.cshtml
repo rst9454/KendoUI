@@ -1,0 +1,44 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="demo-section" style="text-align: center;">
+    @(Html.Kendo().Calendar()
+            .Value(DateTime.Now)
+    )
+</div>
+
+@*@(Html.Kendo().Grid<WebKendo.Models.Wendor>() // Kendo UI Grid Wrapper
+        // Name, also HTML elements "id" attribute
+        .Name("grid")
+        // Grid column bindings
+        .Columns(columns =>
+        {
+            columns.Bound(c => c.Id);
+            columns.Bound(c => c.Name);
+            columns.Bound(c => c.Gender);
+            columns.Bound(c => c.City);
+            columns.Bound(c => c.PinCode);
+        })
+        // Toolbars
+        .ToolBar(toolbar => {
+                toolbar.Excel();
+                toolbar.Pdf();
+        })
+        // Enable Paging
+        .Pageable()
+        // Enable Sorting
+        .Sortable(sortable => {
+            sortable.SortMode(GridSortMode.SingleColumn);
+        })
+        // Disable Scrolling
+        .Scrollable(scrollable => scrollable.Enabled(false))
+        // Datasource configuration
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            // Read method action and controller
+            .Read(read => read.Action("GetWendorData", "Home"))
+        )
+    )*@

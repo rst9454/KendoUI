@@ -1,0 +1,48 @@
+﻿@using Kendo.Mvc.UI
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-10 offset-1">
+               
+                    @(Html.Kendo().Grid<KendoUIApp1.Models.Wendor>() 
+            .Name("grid")
+            // Grid column bindings
+            .Columns(columns =>
+            {
+                columns.Bound(c => c.Id);
+                columns.Bound(c => c.Name);
+                columns.Bound(c => c.Gender);
+                columns.Bound(c => c.City);
+                columns.Bound(c => c.PinCode);
+            })
+            // Toolbars
+            .ToolBar(toolbar => {
+                    toolbar.Excel();
+                    toolbar.Pdf();
+            })
+            // Enable Paging
+            .Pageable()
+            // Enable Sorting
+            .Sortable(sortable => {
+                sortable.SortMode(GridSortMode.SingleColumn);
+            })
+            .Filterable()
+            // Disable Scrolling
+            .Scrollable(scrollable => scrollable.Enabled(false))
+            // Datasource configuration
+            .DataSource(dataSource => dataSource
+                .Ajax()
+                // Read method action and controller
+                .Read(read => read.Action("GetData", "Home"))
+            )
+        )
+               
+            </div>
+        </div>
+    </div>
